@@ -3,47 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestor de Cookies</title>
+    <title>Borrador de Cookies</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            background-color: #f0f0f0;
         }
         .container {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         h1 {
             color: #333;
         }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
         #message {
             margin-top: 20px;
             font-weight: bold;
+            color: #4CAF50;
         }
     </style>
     <script>
@@ -54,15 +38,17 @@
                 const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
                 document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
             }
-            document.getElementById('message').textContent = "¡Todas las cookies han sido eliminadas!";
+            document.getElementById('message').textContent = "Cookies borradas con éxito";
+            // Cerrar la ventana después de 2 segundos
+            setTimeout(() => window.close(), 2000);
         }
+        // Ejecutar al cargar la página
+        window.onload = deleteAllCookies;
     </script>
 </head>
 <body>
     <div class="container">
-        <h1>Gestor de Cookies</h1>
-        <p>Haga clic en el botón para eliminar todas las cookies de este sitio.</p>
-        <button onclick="deleteAllCookies()">Eliminar Cookies</button>
+        <h1>Borrador de Cookies</h1>
         <div id="message"></div>
     </div>
 </body>
